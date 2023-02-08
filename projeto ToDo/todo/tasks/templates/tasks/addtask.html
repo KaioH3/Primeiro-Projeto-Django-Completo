@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Adicione uma tarefa{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Adicione a sua nova tarefa:</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!--este token serve para bloquear qualquer tentativa de XSS, promovendo segurança ao site-->
+        <!--e o django não admite a criação de forms sem este token-->
+        {{ form|crispy }} <!--"form.as_p" form envolvidos por paragrafos(<p>)-->
+        <input type="submit" class="btn btn-success" value="Criar Tarefa">
+    </form>
+</div>
+{% endblock %}

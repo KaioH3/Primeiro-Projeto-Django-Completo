@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Editando '{{task.title}}'{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Editando '{{task.title}}'</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!--este token serve para bloquear qualquer tentativa de XSS, promovendo segurança ao site-->
+        <!--e o django não admite a criação de forms sem este token-->
+        {{ form|crispy }} <!--"form.as_p" form envolvidos por paragrafos(<p>)-->
+        <!--agora o forms está com o crispy_forms para deixar-los esteticamente melhores-->
+        <input type="submit" class="btn btn-success" value="Editar Tarefa">
+    </form>
+</div>
+{% endblock %}

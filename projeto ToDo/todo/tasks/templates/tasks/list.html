@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de tarefas{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Lista de Tarefas</h1>
+    <a id="add-link" href="newtask/">
+        <div class="col-2 add-div">
+            <!--i de icon-->
+            <i class="fas fa-plus"></i> Adicionar tarefa
+        </div>
+    </a>
+    <div class="col-9 search-div">
+        <form method="GET" id="search-form">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar" value="{{ request.GET.search }}">
+                <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    {% if messages %}
+        <!--"se tiver mensagens"-->
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{  message }}</li>
+                <!--cria uma lista já com as tags e as classes do alerta montadas, se existirem mensagens-->
+                {% endfor %}
+        </ul>
+    {% endif %}
+    <ul class="task-list">
+        {% for task in tasks %}
+        <!--esta tag "for" serve para percorre tasks-->
+        {% if task.done == 'doing' %}
+            <!--se task.done for igual a 'doing' a classe da lista é só "task-item", senão a classe é "task-item done"-->
+            <li class="task-item">
+        {% else %}
+            <li class="task-item done">
+        {% endif %}
+                <!--O django já cria os ids por padrão, por isso não preciso criar-->
+                <span><a href="/task/{{task.id}}">{{task.title}}</a></span>
+                <a href="delete/{{task.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+                <a href="edit/{{task.id}}"><span><i class="fas fa-edit""></i></span></a>
+                <!--Icones acima, sendo um de lixo(trash) e um de lapis(edit)--> 
+                <!--<a href="changestatus/{{task.id}}"><span><i class="fas fa-check"></i></span></a> -->               
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            <!--verificando se tem alguma página anterior para não mostrar um botão desnecessario na primeira página-->
+            {% if tasks.has_previous %}
+                <a href="?page={{ tasks.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                <!--Montando o argumento que trará o número da página anterior e ancorará-lo(a href) no icone do fontawesome(i)-->
+            {% endif %}
+
+            {% if tasks.paginator.num_pages %}
+            <span class="current">
+                <!--logica para mostrar em qual página o user está e quantas páginas ainda tem para serem mostradas-->
+                {{ tasks.number }} de {{ tasks.paginator.num_pages }}
+            </span>
+            {% endif %}
+
+            {% if tasks.has_next %}
+                <!--logica para a próxima página-->
+                <a href="?page={{ tasks.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}
+
+<!--<h1>Hello Templates</h1> estava assim antes, sem o base.html-->
+<!--este templete aqui está rodando no root(/)-->

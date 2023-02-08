@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registrar no To Do list{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Registrar no To Do List</h4>
+
+                <form method="post">
+                    <!--não precisa definir action no form porque entende que é para a mesma url-->
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <!--quando precisa de autentificação o django redireciona para o login e salva a url no parametro next, e quando logar o user vai pra essa url-->
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                </form>
+
+                <p class="change-form-p">Já possui uma conta? <a href="/accounts/login">Faça o login clicando aqui.</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

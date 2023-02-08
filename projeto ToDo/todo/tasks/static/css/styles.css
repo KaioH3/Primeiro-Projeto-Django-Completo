@@ -1,0 +1,196 @@
+/*Obs.: para que as alterações feitas nos arquivos do static sejam mostradas depois de alteradas, deve-se atualizar o cache, 
+apertando ctrl+F5, ou colocando "?{% now "U" %}" no endereço dos arquivos css, porém eu acho que isto sirva somente para a parte de 
+criação e não para a parte de deploy */
+
+.container-fluid{
+    padding: 1px;
+}
+
+.container-fluid .row{
+    margin: 0; /*retirando o scroll lateral da pagina de login*/
+}
+/* Navbar */
+
+/*adicionando margens à navbar*/
+
+.navbar{
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.navbar-nav{
+    margin: auto;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.navbar-link{
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* Botão de adicionar */
+#add-link{
+    text-decoration: none;
+}
+
+.add-div{
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 25px;
+}
+
+.fas.fa-plus{
+    color: #FFF;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* Search */
+.fas.fa-search{
+    position: absolute;
+    top: 12px;
+    right: 26px;
+    cursor: pointer;
+}
+
+.search-div{
+    position: relative;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Lista de tarefas */
+.list-div{
+    padding: 0;
+}
+
+.list-div p{
+    color: black;
+}
+
+.task-list{
+    padding-left: 0;
+}
+
+.task-item{
+    list-style: none; /*Tira a bolinha do lado(o estilo de lista)*/
+    font-size: 20px;
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 1px dashed #ccc;/*tracejado*/
+}
+
+.task-item.done{
+    background-color: #CCC;
+}
+
+.fas.fa-trash, .fas.fa-edit{
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.fas.fa-edit{
+    color: #13c447;
+}
+
+.fas.fa-trash{
+    color: #db1e47;
+}
+
+/*.fas.fa-check{
+    color: #3376e2;
+}*/
+/* */
+
+
+/* Rodape*/
+footer{
+    background-color: #333;
+    height: 300px; /* Aperte ctrl+shift+c, para saber a altura dos elementos*/
+    border-top: 2px solid #202020;
+}
+
+footer p{
+    color: #f5f5f5; /*#ff5f5f*/
+    text-align: center;
+    top: 50px;
+    position: relative;
+}
+
+/* Messages */
+ul.messages{
+    padding: 0;
+}
+
+ul.messages li{
+    /*para tirar a bolinha que tem no estilo de lista*/
+    list-style: none;
+}
+
+/* Paginação */
+.pagination{
+    margin-bottom: 20px;
+}
+
+.step-links{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .current{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Login */
+.auth-card{
+    margin-bottom: 30px;
+}
+
+.change-form-p{
+    color: black;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/*About author*/
+.about-text-div{
+    float: left;
+    width: 45%;
+    padding: 40px;
+    padding-left:70px;
+    padding-right: 70px;
+    height: 475px;
+    margin:30px;
+    margin-right:30px;
+    margin-bottom: 70px;
+    background-color: #534e4e;
+    line-height:2;
+
+}
+
+.about-text-div h1, p {
+    color: #ecf0ed;
+    margin: 1px;
+    padding: 1px;
+}
+
+.about-text-div h1{
+    font-size: 36px;
+}
+
+.about-text-div p{
+    font-size: 18px;
+}
